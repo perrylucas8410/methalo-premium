@@ -1,0 +1,22 @@
+{
+  "name": "browser-platform",
+  "version": "2.0.0",
+  "description": "Remote browser platform with shared sessions, tab bar, and heartbeat detection",
+  "scripts": {
+    "install:all": "cd backend && npm install && npx playwright install chromium && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm start"
+  },
+  "keywords": [
+    "browser",
+    "streaming",
+    "chromium",
+    "playwright",
+    "remote-browser",
+    "shared-sessions",
+    "tabs",
+    "heartbeat"
+  ],
+  "author": "",
+  "license": "MIT"
+}
