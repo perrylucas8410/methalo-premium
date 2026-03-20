@@ -72,9 +72,10 @@ All users are configured in `backend/config.js`.
 
 ```javascript
 users: [
-  { username: 'admin', password: 'admin123' },
-  { username: 'user1', password: 'password1' },
-  { username: 'newuser', password: 'newpassword123' }  // Add this line
+ { username: 'admin', password: 'admin123', isAdmin: true },    // Admin account - opens admin panel
+ { username: 'user1', password: 'password1', isAdmin: false },  // Regular user - opens browser
+ { username: 'user2', password: 'password2', isAdmin: false },
+ { username: 'user3', password: 'password3', isAdmin: false },
 ]
 ```
 
