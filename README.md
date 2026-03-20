@@ -35,7 +35,7 @@ chmod +x setup.sh
 
 Or manually:
 ```bash
-cd backend && npm install && npx playwright install chromium
+cd backend && npm install
 cd ../frontend && npm install
 ```
 
