@@ -205,8 +205,8 @@ function showLoginPage() {
     <div class="login-container">
       <div class="login-box">
         <div class="login-header">
-          <h1>Browser Platform</h1>
-          <p>Access your remote browser session</p>
+          <h1>Methalo Browser</h1>
+          <p>Access your Methalo browser</p>
         </div>
         <form class="login-form" id="loginForm">
           <div id="errorMessage"></div>
