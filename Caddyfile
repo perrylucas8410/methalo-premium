@@ -1,6 +1,12 @@
 premium.methalo.online {
+
+    handle /api/* {
+        reverse_proxy 127.0.0.1:3001
+    }
+
+    handle /ws/* {
+        reverse_proxy 127.0.0.1:3001
+    }
+
     reverse_proxy 127.0.0.1:3000
-    
-    reverse_proxy /api/* 127.0.0.1:3001
-    reverse_proxy /ws/* 127.0.0.1:3001
 }
