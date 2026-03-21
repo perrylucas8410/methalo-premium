@@ -102,7 +102,7 @@ async function initializeBrowserSessions() {
 
       const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
       const page = await context.newPage();
-      await page.goto('https://www.google.com', { waitUntil: 'networkidle' });
+      await page.goto('https://www.bing.com', { waitUntil: 'networkidle' });
 
       const cdpSession = await context.newCDPSession(page);
       await cdpSession.send('Page.enable');
@@ -116,7 +116,7 @@ async function initializeBrowserSessions() {
         wsClients: new Map(), // userId -> ws
         isStreaming: false,
         streamInterval: null,
-        tabs: [{ id: 'tab-1', url: 'https://www.google.com', title: 'Google' }],
+        tabs: [{ id: 'tab-1', url: 'https://www.bing.com', title: 'Bing' }],
         activeTabId: 'tab-1'
       });
 
@@ -483,7 +483,7 @@ app.post('/api/browser/navigate', authenticateToken, validateSession, async (req
 
 // Tab management endpoints
 app.post('/api/browser/tab', authenticateToken, validateSession, async (req, res) => {
-  const { url = 'https://www.google.com' } = req.body;
+  const { url = 'https://www.bing.com' } = req.body;
   const sessionId = sessionAssignments.get(req.userId);
   const browserSession = browserSessions.get(sessionId);
   
@@ -555,11 +555,11 @@ app.delete('/api/browser/tab/:tabId', authenticateToken, validateSession, async 
   // If no tabs left, create a new one
   if (browserSession.tabs.length === 0) {
     const newTabId = `tab-${Date.now()}`;
-    await browserSession.page.goto('https://www.google.com', { waitUntil: 'networkidle' });
+    await browserSession.page.goto('https://www.bing.com', { waitUntil: 'networkidle' });
     browserSession.tabs.push({
       id: newTabId,
       url: browserSession.page.url(),
-      title: 'Google'
+      title: 'Bing'
     });
     browserSession.activeTabId = newTabId;
   } else if (browserSession.activeTabId === tabId) {
@@ -741,7 +741,7 @@ app.post('/api/admin/sessions/:sessionId/restart', authenticateToken, requireAdm
 
     const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
     const page = await context.newPage();
-    await page.goto('https://www.google.com', { waitUntil: 'networkidle' });
+    await page.goto('https://www.bing.com', { waitUntil: 'networkidle' });
 
     const cdpSession = await context.newCDPSession(page);
     await cdpSession.send('Page.enable');
@@ -752,7 +752,7 @@ app.post('/api/admin/sessions/:sessionId/restart', authenticateToken, requireAdm
     session.context = context;
     session.page = page;
     session.cdpSession = cdpSession;
-    session.tabs = [{ id: 'tab-1', url: 'https://www.google.com', title: 'Google' }];
+    session.tabs = [{ id: 'tab-1', url: 'https://www.bing.com', title: 'Bing' }];
     session.activeTabId = 'tab-1';
 
     console.log(`[Admin] Session ${sessionId} restarted`);
